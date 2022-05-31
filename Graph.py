@@ -1,33 +1,34 @@
+from Entities import Node, Edge
 class Graph:
     def __init__(self, name):
         self.name = name
         self.nodes = []
         self.edges = []
 
-    def add_node():
+    def add_node(self, *args):
+        self.nodes.append(Node(*args))
+
+    def add_edge(self):
         pass
 
-    def add_edge():
-        pass
-
-    def del_node():
+    def del_node(self):
         pass
     
-    def del_edge():
+    def del_edge(self):
         pass
 
-    def node_degree(node: str) -> int:
+    def node_degree(self, node: str) -> int:
         return 0
     
-    def nodes_degree() -> tuple[int]:
+    def nodes_degree(self) -> tuple[int]:
         return (0)
     
-    def get_graph_info():
+    def get_graph_info(self):
         pass
     
-    def save(savePath: str):
+    def save(self, savePath: str):
         pass
 
-    def load(loadPath: str):
+    def load(self, loadPath: str):
         pass
     
