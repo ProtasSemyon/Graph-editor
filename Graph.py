@@ -55,11 +55,11 @@ class Graph:
         self.edges = []
         with open(loadPath, "r") as file:
             info = file.read()
-        nodeStart = info.find("nodes = new vis.DataSet([{") + 24
-        edgeStart = info.find("edges = new vis.DataSet([{") + 24
-        end = info.rfind("}]);")
+        nodeStart = info.find("nodes = new vis.DataSet([") + 24
+        edgeStart = info.find("edges = new vis.DataSet([") + 24
+        end = info.rfind("]);")
         nodeInfo = json.loads(info[nodeStart: edgeStart - 35])
-        edgeInfo = json.loads(info[edgeStart: end + 2])
+        edgeInfo = json.loads(info[edgeStart: end + 1])
         for record in nodeInfo:
             self.add_node(record["label"], record["color"], record["shape"])
         for record in edgeInfo:

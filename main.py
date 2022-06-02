@@ -11,6 +11,19 @@ def run() -> None:
 def show():
     os.system(".\current.html")
 
+@run.command("create")
+@click.option('-n', '--name')
+def create(name):
+    global g
+    with open("current.txt", "w") as nameInfo:
+        nameInfo.write(name)
+        nameInfo.close()
+        g.edges = []
+        g.nodes = []
+        g.name = name
+        output(g)
+        
+
 
 @run.command("add_node")
 @click.option('-l', '--label')
@@ -42,17 +55,12 @@ def output(graph):
     net.save_graph("current.html")
     net.save_graph(f"{graph.name}.html")
 
-
-
-
 if __name__ == "__main__":
     with open("current.txt", "r") as nameInfo:
         name = nameInfo.read()
+        nameInfo.close()
     g = Graph(name)
     g.load("current.html")
-    # g.add_node("1", "red", "dot")
-    # g.add_node("2", "red", "dot")
-    # g.add_edge("1", "2", True, "black", "23")
     run()
 
 
