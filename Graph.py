@@ -18,7 +18,6 @@ class Graph:
 
     def add_edge(self, first, second, *args):
         labels = list(map(lambda x: x.label, self.nodes))
-        print(labels)
         try:
             assert first in labels and second in labels
         except AssertionError:
