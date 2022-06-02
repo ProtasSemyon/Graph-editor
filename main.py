@@ -12,6 +12,26 @@ def show():
     os.system(".\current.html")
 
 
+@run.command("add_node")
+@click.option('-l', '--label')
+@click.option('-c', '--color', default = "black")
+@click.option('-s', '--shape', default = "dot")
+def addNode(label: str, color: str, shape: str):
+    global g
+    g.add_node(label, color, shape)
+    output(g)
+    
+@run.command("add_edge")
+@click.option('-s', '--start')
+@click.option('-e', '--end')
+@click.option('-c', '--color', default = "black")
+@click.option('-i', "--isoriented", default = 0)
+@click.option('-l', "--label", default = "")
+def addEdge(start: str, end: str, color: str, isoriented: bool, label: str):
+    global g
+    g.add_edge(start, end, isoriented, color, label)
+    output(g)
+
 def output(graph):
     net = Network("650px", "1500px", heading = graph.name)
     for node in graph.nodes:
@@ -33,8 +53,7 @@ if __name__ == "__main__":
     # g.add_node("1", "red", "dot")
     # g.add_node("2", "red", "dot")
     # g.add_edge("1", "2", True, "black", "23")
-    output(g)
-    #run()
+    run()
 
 
 
