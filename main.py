@@ -56,6 +56,22 @@ def addEdge(start: str, end: str, color: str, isoriented: bool, label: str):
     g.add_edge(start, end, isoriented, color, label)
     output(g)
 
+@run.command("del_edge")
+@click.option('-s', '--start')
+@click.option('-e', '--end')
+def delEdge(start: str, end: str):
+    global g
+    g.del_edge(start, end)
+    output(g)
+
+@run.command("del_node")
+@click.option('-l', '--label')
+def delNode(label: str):
+    global g
+    g.del_node(label)
+    output(g)
+
+
 def output(graph):
     net = Network("650px", "1500px", heading = graph.name)
     for node in graph.nodes:
@@ -70,7 +86,7 @@ if __name__ == "__main__":
     with open("current.txt", "r") as nameInfo:
         name = nameInfo.read()
         nameInfo.close()
-    g = Graph(name)
+    g: Graph = Graph(name)
     g.load("current.html")
     run()
 

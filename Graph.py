@@ -34,10 +34,27 @@ class Graph:
         self.edges.append(Edge(first, second, *args))
 
     def del_node(self, label: str):
-        pass
+        for i, node in enumerate(self.nodes):
+            if label == node.label:
+                to_del = []
+                for j, edge in enumerate(self.edges):
+                    checkEdge = edge.getNodes()
+                    if label == checkEdge[0].label or label == checkEdge[1].label:
+                        to_del.append(edge)
+                for k in to_del:
+                    self.edges.remove(k)
+                del self.nodes[i]
+                break
+
     
     def del_edge(self, first: str, second: str):
-        pass
+        for i, edge in enumerate(self.edges):
+            edge = edge.getNodes()
+            if first == edge[0].label and second == edge[1].label:
+                del self.edges[i]
+                break
+
+
 
     def node_degree(self, label: str) -> int:
         return 0
