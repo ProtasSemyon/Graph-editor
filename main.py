@@ -23,6 +23,11 @@ def create(name):
         g.name = name
         output(g)
         
+@run.command("info")
+def info():
+    global g
+    print(g.get_graph_info()[0])
+    print(g.get_graph_info()[1])
 
 
 @run.command("add_node")
@@ -51,7 +56,7 @@ def output(graph):
         net.add_node(node.label, label = node.label, color = node.color, shape = node.shape)
     for edge in graph.edges:
         net.directed = edge.isOriented
-        net.add_edge(edge.first, edge.second, color = edge.color, label = edge.label)
+        net.add_edge(edge.first.label, edge.second.label, color = edge.color, label = edge.label)
     net.save_graph("current.html")
     net.save_graph(f"{graph.name}.html")
 

@@ -36,3 +36,6 @@ class Edge:
             raise SystemExit
         self.color = color
         self.isOriented = isOriented
+
+    def getNodes(self):
+        return self.first, self.second
