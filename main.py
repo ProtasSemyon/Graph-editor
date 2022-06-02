@@ -19,16 +19,20 @@ def output(graph):
     for edge in graph.edges:
         net.directed = edge.isOriented
         net.add_edge(edge.first, edge.second, color = edge.color, label = edge.label)
+    net.save_graph("current.html")
     net.save_graph(f"{graph.name}.html")
 
 
 
+
 if __name__ == "__main__":
-    g = Graph("current")
-    #g.load("current.html")
-    g.add_node("1", "red", "dot")
-    g.add_node("2", "red", "dot")
-    g.add_edge("1", "2", True, "black", "23")
+    with open("current.txt", "r") as nameInfo:
+        name = nameInfo.read()
+    g = Graph(name)
+    g.load("current.html")
+    # g.add_node("1", "red", "dot")
+    # g.add_node("2", "red", "dot")
+    # g.add_edge("1", "2", True, "black", "23")
     output(g)
     #run()
 

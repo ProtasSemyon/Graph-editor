@@ -7,8 +7,14 @@ class Graph:
         self.nodes = []
         self.edges = []
 
-    def add_node(self, *args):
-        self.nodes.append(Node(*args))
+    def add_node(self, label, *args):
+        labels = list(map(lambda x: x.label, self.nodes))
+        try:
+            assert label not in labels
+        except AssertionError:
+            print("Already exist node with such name")
+            raise SystemExit
+        self.nodes.append(Node(label, *args))
 
     def add_edge(self, first, second, *args):
         labels = list(map(lambda x: x.label, self.nodes))
