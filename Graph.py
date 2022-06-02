@@ -57,10 +57,21 @@ class Graph:
 
 
     def node_degree(self, label: str) -> int:
-        return 0
+        for i, node in enumerate(self.nodes):
+            if label == node.label:
+                degree = 0
+                for j, edge in enumerate(self.edges):
+                    checkEdge = edge.getNodes()
+                    if label == checkEdge[0].label or label == checkEdge[1].label:
+                        degree += 1
+                return degree
     
-    def nodes_degree(self) -> tuple[int]:
-        return (0)
+    def nodes_degrees(self) -> list:
+        labels = list(map(lambda x: x.label, self.nodes))
+        rez = []
+        for i in labels:
+            rez.append((i, self.node_degree(i)))
+        return rez
     
     def get_graph_info(self):
         labels = list(map(lambda x: x.label, self.nodes))

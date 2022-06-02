@@ -71,8 +71,21 @@ def delNode(label: str):
     g.del_node(label)
     output(g)
 
+@run.command("nodes_degree")
+@click.option('-l', '--label')
+def node_degree(label: str):
+    global g
+    print(g.node_degree(label))
+
+@run.command("nodes_degrees")
+def nodes_degrees():
+    global g
+    degrees = g.nodes_degrees()
+    for i in degrees:
+        print(i[0], "-", i[1])
 
 def output(graph):
+    
     net = Network("650px", "1500px", heading = graph.name)
     for node in graph.nodes:
         net.add_node(node.label, label = node.label, color = node.color, shape = node.shape)
