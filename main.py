@@ -23,11 +23,17 @@ def create(name):
         g.name = name
         output(g)
         
-@run.command("info")
+@run.command("graph_info")
 def info():
     global g
-    print(g.get_graph_info()[0])
-    print(g.get_graph_info()[1])
+    print("Nodes", *g.get_graph_info()[0])
+    print("Edges")
+    edges = g.get_graph_info()[1]
+    for edge in edges:
+        arrow = "--"
+        if edge[2]:
+            arrow = "->"
+        print(edge[0], arrow, edge[1])
 
 
 @run.command("add_node")

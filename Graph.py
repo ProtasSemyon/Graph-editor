@@ -31,7 +31,6 @@ class Graph:
             if node.label == second:
                 second = node
                 break
-        print(first, second)
         self.edges.append(Edge(first, second, *args))
 
     def del_node(self, label: str):
@@ -48,7 +47,8 @@ class Graph:
     
     def get_graph_info(self):
         labels = list(map(lambda x: x.label, self.nodes))
-        return (labels, self.edges)
+        edges = list(map(lambda x: (x.getNodes()[0].label,x.getNodes()[1].label, x.isOriented), self.edges))
+        return labels, edges
     
     def save(self, savePath: str):
         net = Network("650px", "1500px", heading = self.name)
