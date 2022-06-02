@@ -84,6 +84,19 @@ def nodes_degrees():
     for i in degrees:
         print(i[0], "-", i[1])
 
+@run.command("switch")
+@click.option('-n', '--name')
+def switch(name: str):
+    global g
+    g = Graph(name)
+    g.load(f"{g.name}.html")
+    with open("current.txt", "w") as nameInfo:
+        nameInfo.write(name)
+        nameInfo.close()
+    output(g)
+
+
+
 def output(graph):
     
     net = Network("650px", "1500px", heading = graph.name)
