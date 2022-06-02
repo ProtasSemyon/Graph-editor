@@ -2,7 +2,6 @@ import click
 from Graph import Graph
 from pyvis.network import Network
 import os
-from pathlib import Path
 
 @click.group()
 def run() -> None:
@@ -23,16 +22,15 @@ def output(graph):
     net.save_graph(f"{graph.name}.html")
 
 
+
 if __name__ == "__main__":
-    # graph = Graph(name = "current")
-    # graph.add_node("1", "blue", "triangle")
-    # graph.add_node("2", "yellow", "diamond")
-    # graph.add_node("3", "red", "dot")
-    # graph.add_edge("1", "2", True, "black", "12")
-    # graph.add_edge("2", "3", True, "black", "23")
-    # graph.add_edge("1", "3", True, "black", "13")
-    # net.save_graph(f"{graph.name}.html")
-    run()
+    g = Graph("current")
+    #g.load("current.html")
+    g.add_node("1", "red", "dot")
+    g.add_node("2", "red", "dot")
+    g.add_edge("1", "2", True, "black", "23")
+    output(g)
+    #run()
 
 
 
