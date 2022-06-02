@@ -24,6 +24,7 @@ class Node:
             raise SystemExit
         self.shape = shape
 
+
 class Edge:
     def __init__(self, first: Node, second: Node, isOriented: bool = False, color: str = "black", label: str = ""):
         self.label = label

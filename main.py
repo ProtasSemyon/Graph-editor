@@ -3,13 +3,16 @@ from Graph import Graph
 from pyvis.network import Network
 import os
 
+
 @click.group()
 def run() -> None:
     pass
 
+
 @run.command('show')
 def show():
     os.system(".\current.html")
+
 
 @run.command("create")
 @click.option('-n', '--name')
@@ -44,7 +47,8 @@ def addNode(label: str, color: str, shape: str):
     global g
     g.add_node(label, color, shape)
     output(g)
-    
+
+
 @run.command("add_edge")
 @click.option('-s', '--start')
 @click.option('-e', '--end')
@@ -56,6 +60,7 @@ def addEdge(start: str, end: str, color: str, isoriented: bool, label: str):
     g.add_edge(start, end, isoriented, color, label)
     output(g)
 
+
 @run.command("del_edge")
 @click.option('-s', '--start')
 @click.option('-e', '--end')
@@ -64,6 +69,7 @@ def delEdge(start: str, end: str):
     g.del_edge(start, end)
     output(g)
 
+
 @run.command("del_node")
 @click.option('-l', '--label')
 def delNode(label: str):
@@ -71,11 +77,13 @@ def delNode(label: str):
     g.del_node(label)
     output(g)
 
+
 @run.command("nodes_degree")
 @click.option('-l', '--label')
 def node_degree(label: str):
     global g
     print(g.node_degree(label))
+
 
 @run.command("nodes_degrees")
 def nodes_degrees():
@@ -83,6 +91,47 @@ def nodes_degrees():
     degrees = g.nodes_degrees()
     for i in degrees:
         print(i[0], "-", i[1])
+
+
+@run.command("show_matrix")
+def showMatrix():
+    global g
+    g.printMatrix()
+
+
+@run.command("is_euler")
+def isEuler():
+    global g
+    if g.isEuler():
+        print("True")
+    else:
+        print("False")
+
+
+@run.command("euler_cycle")
+def eulerCycle():
+    global g
+    if not g.isEuler():
+        print("Graph is not euler")
+        raise SystemExit
+    g.printEulerCycle()
+
+
+@run.command("to_planar")
+def toPlanar():
+    global g
+    g.toPlanar()
+    output(g)
+
+
+@run.command("is_planar")
+def isPlanar():
+    global g
+    if g.isPlanar():
+        print("True")
+    else:
+        print("False")
+
 
 @run.command("switch")
 @click.option('-n', '--name')
@@ -95,6 +144,18 @@ def switch(name: str):
         nameInfo.close()
     output(g)
 
+@run.command("to_tree")
+def toTree():
+    global g
+    g.toTree()
+    output(g)
+
+@run.command("get_length")
+@click.option('-s', '--start')
+@click.option('-e', '--end')
+def toTree(start, end):
+    global g
+    print(g.getLength(start, end))
 
 
 def output(graph):

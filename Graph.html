@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
 <center>
-<h1>graph</h1>
+<h1>Graph</h1>
 </center>
 
 <!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
@@ -50,8 +50,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"color": "black", "id": "1", "label": "1", "shape": "dot"}, {"color": "black", "id": "2", "label": "2", "shape": "dot"}, {"color": "black", "id": "3", "label": "3", "shape": "dot"}]);
-        edges = new vis.DataSet([{"color": "black", "from": "1", "label": "", "to": "2"}, {"arrows": "to", "color": "black", "from": "1", "label": "", "to": "3"}, {"arrows": "to", "color": "black", "from": "2", "label": "", "to": "3"}]);
+        nodes = new vis.DataSet([{"color": "black", "id": "0", "label": "0", "shape": "dot"}, {"color": "black", "id": "1", "label": "1", "shape": "dot"}, {"color": "black", "id": "2", "label": "2", "shape": "dot"}, {"color": "black", "id": "3", "label": "3", "shape": "dot"}, {"color": "black", "id": "4", "label": "4", "shape": "dot"}, {"color": "black", "id": "5", "label": "5", "shape": "dot"}, {"color": "black", "id": "6", "label": "6", "shape": "dot"}]);
+        edges = new vis.DataSet([{"color": "black", "from": "0", "label": "", "to": "1"}, {"color": "black", "from": "0", "label": "", "to": "2"}, {"color": "black", "from": "1", "label": "", "to": "2"}, {"color": "black", "from": "3", "label": "", "to": "2"}, {"color": "black", "from": "4", "label": "", "to": "2"}, {"color": "black", "from": "4", "label": "", "to": "3"}, {"color": "black", "from": "4", "label": "", "to": "5"}, {"color": "black", "from": "4", "label": "", "to": "6"}, {"color": "black", "from": "5", "label": "", "to": "6"}, {"color": "black", "from": "0", "label": "", "to": "3"}, {"color": "black", "from": "1", "label": "", "to": "3"}, {"color": "black", "from": "1", "label": "", "to": "4"}, {"color": "black", "from": "0", "label": "", "to": "4"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
